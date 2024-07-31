@@ -105,7 +105,6 @@ const UserDetails = () => {
         ) : (
           <p>No user data found.</p>
         )}
-      
 
       <hr />
       <div className="button-group text-center my-3">
@@ -122,7 +121,6 @@ const UserDetails = () => {
 
       {activeSection === 'repositories' && (
         <div>
-          <h2 className="text-center">Repositories</h2>
           <div className="repoCard d-flex flex-wrap justify-content-center gap-3 p-3">
             {repoData?.map((repo) => (
               <div key={repo.id} className="border bg-black text-white repoStyle">
@@ -134,10 +132,8 @@ const UserDetails = () => {
         </div>
       )}
 
-      {activeSection === 'followers' && (
-        
-        <div className="d-flex gap-3 flex-wrap justify-content-center">
-          
+      {activeSection === 'followers' && (        
+        <div className="d-flex gap-3 flex-wrap justify-content-center">          
           {followersData?.map((follower) => (
             <Cards
             key={follower.id}
@@ -150,8 +146,7 @@ const UserDetails = () => {
       )}
 
       {activeSection === 'following' && (
-        <div className="d-flex gap-3 flex-wrap justify-content-center">
-          
+        <div className="d-flex gap-3 flex-wrap justify-content-center">          
           {followingData?.map((following) => (
             <Cards
             key={following.id}
