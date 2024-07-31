@@ -7,7 +7,7 @@ import Card from "react-bootstrap/Card";
 const Cards = ({data, image, name, username, bio, follow,}) => {
   return (
     <div className='d-flex '>
-      <Card className="contai d-flex flex-column align-items-center gap-2">
+      <Card className="contai d-flex flex-column align-items-center gap-2 p-2">
           <Card.Img
             variant="top"
             className="imageStyle"

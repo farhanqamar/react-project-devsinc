@@ -5,9 +5,8 @@ import Cards from '../components/Cards';
 const apiuRL = import.meta.env.REACT_APP_API;
 
 const FirstData = () => {
-  const [usersData, setUsersData] = useState();  
-  console.log(usersData);
-
+  const [usersData, setUsersData] = useState();
+  
     useEffect(() => {
         fetchData()
     },[])
