@@ -1,0 +1,12 @@
+@import '../variables.scss';
+
+.imageStyle {
+  width: 20rem;
+  height: 20rem;
+  border-radius: 50%;
+  border: 5px solid $secondary;
+}
+.repoStyle{
+  width: 40%;
+  text-align: center;
+}

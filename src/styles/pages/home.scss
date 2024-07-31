@@ -1,0 +1,25 @@
+@import '../variables.scss';
+
+.formStyle {
+  .inputStyle {
+    outline: none;
+    padding: 5px 20px;
+    border: none;
+    border-radius: 30px 0 0 30px;
+  }
+  .buttonStyle {
+    border-radius: 0 30px 30px 0;
+    padding: 5px 20px;
+    border: none;
+    background-color: $primary;
+    color: $secondary;
+  }
+}
+
+.profiles {
+  border-radius: 5px;
+  overflow: hidden;
+  width: fit-content;
+  padding: 10px 5px;
+}
+

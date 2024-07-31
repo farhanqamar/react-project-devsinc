@@ -1,0 +1,16 @@
+@import '../variables.scss';
+
+.contai {
+    width: fit-content;
+    padding: 10px 5px;
+    background-color: rgb(15, 15, 15);
+    color: $secondary;
+    border: 3px solid $secondary;
+    box-shadow: 5px 5px 15px 5px ;
+    .imageStyle {
+      border: 2px solid $secondary;
+      border-radius: 50%;
+      width: 150px;
+      height: 150px;
+    }
+}
