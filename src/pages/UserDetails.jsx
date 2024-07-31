@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import Button from "react-bootstrap/Button";
 import { Link, useLocation } from "react-router-dom";
-import { GiShadowFollower } from "react-icons/gi";
 import { Image } from "react-bootstrap";
 import "../styles/pages/userDetails.scss";
 import axios from "axios";
