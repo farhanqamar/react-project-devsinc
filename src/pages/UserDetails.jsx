@@ -7,7 +7,6 @@ import "../styles/pages/userDetails.scss";
 import axios from "axios";
 import Cards from '../components/Cards'
 
-const apiToken = import.meta.env.REACT_APP_TOKEN;
 const apiuRL = import.meta.env.REACT_APP_API;
 
 const UserDetails = () => {
@@ -18,7 +17,6 @@ const UserDetails = () => {
 
   const location = useLocation();
   const { data } = location.state || {};
-  console.log("check following", data.following_url);
   
   useEffect(() => {
     repoDataFetch()
@@ -36,7 +34,6 @@ const UserDetails = () => {
           const myData = res.data;
           localStorage.setItem("repoData", JSON.stringify(myData));
           setRepoData(myData);
-          console.log("repo",myData);
         })
         .catch((error) => {
           console.error("Error fetching data:", error);
@@ -54,7 +51,6 @@ const UserDetails = () => {
           const myData = res.data;
           localStorage.setItem("followersData", JSON.stringify(myData));
           setFollowersData(myData);
-          console.log("followers",myData);
         })
         .catch((error) => {
           console.error("Error fetching data:", error);
@@ -72,7 +68,6 @@ const UserDetails = () => {
           const myData = res.data;
           localStorage.setItem("followingData", JSON.stringify(myData));
           setfollowingData(myData);
-          console.log("following",myData);
         })
         .catch((error) => {
           console.error("Error fetching data:", error);

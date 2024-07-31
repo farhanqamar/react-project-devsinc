@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react';
 import Cards from '../components/Cards';
 
 const apiuRL = import.meta.env.REACT_APP_API;
-const apiToken = import.meta.env.REACT_APP_TOKEN;
 
 const FirstData = () => {
   const [usersData, setUsersData] = useState();  
@@ -23,7 +22,6 @@ const FirstData = () => {
             const myData = res.data;
             localStorage.setItem("firstPageUsers", JSON.stringify(myData));
             setUsersData(myData);
-            console.log(myData);
           })
           .catch((error) => {
             console.error("Error fetching data:", error);

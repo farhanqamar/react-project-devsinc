@@ -12,6 +12,7 @@ const Cards = ({data, image, name, username, bio, follow,}) => {
             variant="top"
             className="imageStyle"
             src={image}
+            alt='Profile Image'
           />
           <Card.Body>
             <Card.Title>{name}</Card.Title>

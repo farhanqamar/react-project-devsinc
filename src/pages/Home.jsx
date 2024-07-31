@@ -5,7 +5,6 @@ import Cards from "../components/Cards";
 import FirstData from '../parts/FirstData';
 
 const apiuRL = import.meta.env.REACT_APP_API;
-const apiToken = import.meta.env.REACT_APP_TOKEN;
 
 const Home = () => {
   const [data, setData] = useState(null);
@@ -30,7 +29,6 @@ const Home = () => {
           const myData = res.data;
           localStorage.setItem("users", JSON.stringify(myData));
           setData(myData);
-          console.log(myData);
         })
         .catch((error) => {
           console.error("Error fetching data:", error);
