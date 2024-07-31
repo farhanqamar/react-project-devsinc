@@ -9,7 +9,7 @@ const FirstData = () => {
 
   useEffect(() => {
     fetchData();
-  }, []);
+  },[]);
 
   const fetchData = () => {
     const dataFromLocalStorage = JSON.parse(

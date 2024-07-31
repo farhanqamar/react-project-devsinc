@@ -9,6 +9,7 @@ const apiuRL = import.meta.env.REACT_APP_API;
 const Home = () => {
   const [data, setData] = useState(null);
   const [search, setSearch] = useState("");
+  
   const firstUpdate = useRef(true);
 
   useEffect(() => {
@@ -17,7 +18,7 @@ const Home = () => {
       return;
     }
     fetching();
-  }, [search]);
+  }, []);
 
   const fetching = () => {
     const dataFromLocalStorage = JSON.parse(localStorage.getItem("users"));
@@ -54,7 +55,6 @@ const Home = () => {
         />
         <button
           className="buttonStyle"
-          onClick={(e) => setSearch(e.target.value)}
           type="submit"
         >
           Search
