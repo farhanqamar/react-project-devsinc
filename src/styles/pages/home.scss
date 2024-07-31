@@ -1,4 +1,4 @@
-@import '../variables.scss';
+@import "../variables.scss";
 
 .formStyle {
   .inputStyle {
@@ -15,11 +15,9 @@
     color: $secondary;
   }
 }
-
 .profiles {
   border-radius: 5px;
   overflow: hidden;
   width: fit-content;
   padding: 10px 5px;
 }
-

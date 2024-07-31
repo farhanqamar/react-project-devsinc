@@ -4,7 +4,7 @@ import { Link, useLocation } from "react-router-dom";
 import { Image } from "react-bootstrap";
 import "../styles/pages/userDetails.scss";
 import axios from "axios";
-import Cards from '../components/Cards'
+import Cards from "../components/Cards";
 
 const apiuRL = import.meta.env.REACT_APP_API;
 
@@ -12,23 +12,24 @@ const UserDetails = () => {
   const [repoData, setRepoData] = useState();
   const [followersData, setFollowersData] = useState();
   const [followingData, setfollowingData] = useState();
-  const [activeSection, setActiveSection] = useState('repositories');
+  const [activeSection, setActiveSection] = useState("repositories");
 
   const location = useLocation();
   const { data } = location.state || {};
-  
+
   useEffect(() => {
-    repoDataFetch()
-    followersDataFetch()
-    followingDataFetch()
-  },[])
+    repoDataFetch();
+    followersDataFetch();
+    followingDataFetch();
+  }, []);
 
   const repoDataFetch = () => {
     const dataFromLocalStorage = JSON.parse(localStorage.getItem("repoData"));
     if (dataFromLocalStorage && data.login === dataFromLocalStorage.login) {
       setRepoData(dataFromLocalStorage);
     } else {
-      axios.get(data.repos_url)
+      axios
+        .get(data.repos_url)
         .then((res) => {
           const myData = res.data;
           localStorage.setItem("repoData", JSON.stringify(myData));
@@ -41,11 +42,17 @@ const UserDetails = () => {
   };
 
   const followersDataFetch = () => {
-    const dataFromLocalStorage = JSON.parse(localStorage.getItem("followersData"));
-    if (dataFromLocalStorage && data.followers_url === dataFromLocalStorage.login) {
+    const dataFromLocalStorage = JSON.parse(
+      localStorage.getItem("followersData")
+    );
+    if (
+      dataFromLocalStorage &&
+      data.followers_url === dataFromLocalStorage.login
+    ) {
       setFollowersData(dataFromLocalStorage);
     } else {
-      axios.get(data.followers_url)
+      axios
+        .get(data.followers_url)
         .then((res) => {
           const myData = res.data;
           localStorage.setItem("followersData", JSON.stringify(myData));
@@ -58,11 +65,17 @@ const UserDetails = () => {
   };
 
   const followingDataFetch = () => {
-    const dataFromLocalStorage = JSON.parse(localStorage.getItem("followingData"));
-    if (dataFromLocalStorage && data.following_url === dataFromLocalStorage.login) {
+    const dataFromLocalStorage = JSON.parse(
+      localStorage.getItem("followingData")
+    );
+    if (
+      dataFromLocalStorage &&
+      data.following_url === dataFromLocalStorage.login
+    ) {
       setfollowingData(dataFromLocalStorage);
     } else {
-      axios.get(`${apiuRL}/${data.login}/following`)
+      axios
+        .get(`${apiuRL}/${data.login}/following`)
         .then((res) => {
           const myData = res.data;
           localStorage.setItem("followingData", JSON.stringify(myData));
@@ -79,10 +92,10 @@ const UserDetails = () => {
       <Link to="/">
         <Button variant="light">← Back</Button>
       </Link>
-      
-        {data ? (
-          <div className="container">
-            <div className="row">
+
+      {data ? (
+        <div className="container">
+          <div className="row">
             <div className="col-12 col-md-6 d-flex justify-content-md-end justify-content-center">
               <Image
                 src={data.avatar_url}
@@ -101,64 +114,78 @@ const UserDetails = () => {
               <p>Repositories: {data.public_repos}</p>
             </div>
           </div>
-          </div>
-        ) : (
-          <p>No user data found.</p>
-        )}
+        </div>
+      ) : (
+        <p>No user data found.</p>
+      )}
 
       <hr />
       <div className="button-group text-center my-3">
-        <button onClick={() => setActiveSection('repositories')} className="btn btn-light mx-2">
+        <button
+          onClick={() => setActiveSection("repositories")}
+          className="btn btn-light mx-2"
+        >
           Repositories
         </button>
-        <button onClick={() => setActiveSection('followers')} className="btn btn-light mx-2">
+        <button
+          onClick={() => setActiveSection("followers")}
+          className="btn btn-light mx-2"
+        >
           Followers
         </button>
-        <button onClick={() => setActiveSection('following')} className="btn btn-light mx-2">
+        <button
+          onClick={() => setActiveSection("following")}
+          className="btn btn-light mx-2"
+        >
           Following
         </button>
       </div>
 
-      {activeSection === 'repositories' && (
+      {activeSection === "repositories" && (
         <div>
           <div className="repoCard d-flex flex-wrap justify-content-center gap-3 p-3">
             {repoData?.map((repo) => (
-              <div key={repo.id} className="border bg-black text-white repoStyle">
+              <div
+                key={repo.id}
+                className="border bg-black text-white repoStyle"
+              >
                 <h3>{repo.name}</h3>
-                <a href={repo.html_url} className="text-light">Visit Repo</a>
+                <a href={repo.html_url} className="text-light">
+                  Visit Repo
+                </a>
               </div>
             ))}
           </div>
         </div>
       )}
 
-      {activeSection === 'followers' && (        
-        <div className="d-flex gap-3 flex-wrap justify-content-center">          
+      {activeSection === "followers" && (
+        <div className="d-flex gap-3 flex-wrap justify-content-center">
           {followersData?.map((follower) => (
             <Cards
-            key={follower.id}
-            data={follower}
-            image={follower.avatar_url}
-            username={follower.login}
+              key={follower.id}
+              data={follower}
+              image={follower.avatar_url}
+              username={follower.login}
             />
           ))}
         </div>
       )}
 
-      {activeSection === 'following' && (
-        <div className="d-flex gap-3 flex-wrap justify-content-center">          
+      {activeSection === "following" && (
+        <div className="d-flex gap-3 flex-wrap justify-content-center">
           {followingData?.map((following) => (
             <Cards
-            key={following.id}
-            data={following}
-            image={following.avatar_url}
-            username={following.login}
+              key={following.id}
+              data={following}
+              image={following.avatar_url}
+              username={following.login}
             />
           ))}
         </div>
       )}
-      </div>
+    </div>
   );
-}
+};
 
 export default UserDetails;

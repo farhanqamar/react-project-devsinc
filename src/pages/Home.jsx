@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useEffect, useRef, useState } from "react";
 import "../styles/pages/home.scss";
 import Cards from "../components/Cards";
-import FirstData from '../parts/FirstData';
+import FirstData from "../parts/FirstData";
 
 const apiuRL = import.meta.env.REACT_APP_API;
 
@@ -24,7 +24,8 @@ const Home = () => {
     if (dataFromLocalStorage && search === dataFromLocalStorage.login) {
       setData(dataFromLocalStorage);
     } else {
-      axios.get(apiuRL + `/${search}`)
+      axios
+        .get(apiuRL + `/${search}`)
         .then((res) => {
           const myData = res.data;
           localStorage.setItem("users", JSON.stringify(myData));
@@ -61,21 +62,20 @@ const Home = () => {
       </form>
 
       {data ? (
-            <Cards
-            data={data}
-            image={data.avatar_url}
-            name={data.name}
-            username={data.login}
-            bio={`Bio: ${data.bio ? data.bio : "Bio not found"}`}
-            follow={`${data.followers} followers &#8226; ${data.following} following`}
-            folwing={data.repos_url}
-            />
-      ):
-      <FirstData/>
-      }
+        <Cards
+          data={data}
+          image={data.avatar_url}
+          name={data.name}
+          username={data.login}
+          bio={`Bio: ${data.bio ? data.bio : "Bio not found"}`}
+          follow={`${data.followers} followers &#8226; ${data.following} following`}
+          folwing={data.repos_url}
+        />
+      ) : (
+        <FirstData />
+      )}
     </section>
   );
-}
-
+};
 
 export default Home;
